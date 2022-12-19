@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="css/normalize.css?ver=1">
+    <link rel="stylesheet" href="css/style.css?ver=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script defer  src="js/g-form.js?ver=2"></script> -->
+    <!-- <script defer src="js/main.js?ver=10"></script> -->
+    <script defer  src="js/g-form.min.js?ver=2"></script>
+    <script defer src="js/main.min.js?ver=3"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <h1 class="title header__title">Ипотечный калькулятор</h1>
+            <p class="descr header__descr">Узнайте примерный платёж, ставку и другие предварительные условия по ипотеке</p>
+        </div>
+    </header>
+    <main>
+        <section class="calculator">
+            <div class="container calculator__container">
+                <div class="calculator__content-left">
+                    <div class="calculator__left-top calculator__left">
+                        <h2 class="title calculator__left-title calculator__title">Цель&nbsp;кредита:</h2>
+                        <button class="btn btn__top btn__top-first btn__active">Квартира в новостройке</button>
+                        <button class="btn btn__top btn__top-second">Квартира на вторичном рынке</button>
+                    </div> 
+                    <div class="calculator__left-program  calculator__left">
+                        <h2 class="title calculator__left-title calculator__title">Ипотечные&nbsp;программы:</h2>
+                        <div class="program calculator__program-first program__active">
+                            <button data-name="basic" class="btn default btn__program program__btn-active second-program">
+                                <div class="text">Базовая программа</div>
+                                <div class="value"> от&nbsp;9,9&nbsp;%</div>
+                            </button>
+                            <button data-name="forIt" class="btn btn__program">
+                                <div class="text">Ипотека для IT</div>
+                                <div class="value"> от&nbsp;4,7&nbsp;%</div>
+                            </button>
+                            <button data-name="support" class="btn btn__program">
+                                <div class="text">Господдержка</div>
+                                <div class="value"> от&nbsp;6,7&nbsp;%</div>
+                            </button>
+                            <button data-name="family" class="btn btn__program">
+                                <div class="text">Семейная ипотека</div>
+                                <div class="value"> от&nbsp;5,7&nbsp;%</div>
+                            </button>
+                            <button data-name="military" class="btn btn__program second-program">
+                                <div class="text">Военная ипотека</div>
+                                <div class="value"> от&nbsp;9,3&nbsp;%</div>
+                            </button>
+                            <button data-name="noFee" class="btn btn__program second-program">
+                                <div class="text">Без первоначального взноса</div>
+                                <div class="value"> от&nbsp;10,2&nbsp;%</div>
+                            </button>
+                        </div>
+                    </div> 
+                    <div class="calculator__left-client  calculator__left">
+                        <input type="checkbox" name="check" id="switch1" class="switch">
+                        <label class="switch-for" for="switch1">
+                            <h2 class="title calculator__left-title calculator__title">Являетесь ли вы зарплатным клиентом банка</h2>
+                        </label>
+                    </div> 
+                    <div class="bank__container">
+                        <ul class="bank__list">
+                            <li class="bank__item">
+                                <button class="btn bank__btn">Сбер банк</button>
+                            </li>
+                            <li class="bank__item">
+                                <button class="btn bank__btn">ВТБ банк</button>
+                            </li>
+                            <li class="bank__item">
+                                <button class="btn bank__btn">Альфа банк</button>
+                            </li>
+                            <li class="bank__item">
+                                <button class="btn bank__btn">ДОМ РФ банк</button>
+                            </li>
+                            <li class="bank__item">
+                                <button class="btn bank__btn">Россельхоз банк</button>
+                            </li>
+                            <li class="bank__item">
+                                <button class="btn bank__btn">Другой банк</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="calculator__left-cost calculator__left">
+                        <h2 class="title calculator__left-title calculator__title">Стоимость&nbsp;недвижимости:</h2>
+                        <div class="input input__number">
+                            <input class="calculator__input" type="text" value="375000" id="total-cost" min="375000" max="30000000" placeholder="0 ₽">
+                        </div>
+                        <div class="input input__range">
+                            <input class="calculator__input-range slider-progress styled-slider" type="range" value="0" id="total-cost-range" min="375000" max="30000000" step="25000" placeholder="0 ₽">
+                        </div>
+                        <div class="input__below">
+                            <span class="from input__below-span">375 тыс. ₽</span>
+                            <span class="before input__below-span">30 млн. ₽</span>
+                        </div>
+                    </div>
+                    <div class="calculator__left-fee calculator__left">
+                        <h2 class="title calculator__left-title calculator__title">Первоначальный&nbsp;взнос:</h2>
+                        <div class="input input__number">
+                            <input class="calculator__input" type="text" value="" id="an-initial-fee" min="37500" max="363750" placeholder="0 ₽">
+                            <span class="input-precent">10 %</span>
+                        </div>
+                        <div class="input input__range">
+                            <input class="calculator__input-range slider-progress styled-slider" type="range" value="37500" id="an-initial-fee-range" min="37500" max="363750" step="125000" placeholder="0 ₽">
+                        </div>
+                        <div class="input__below">
+                            <span class="from from-change input__below-span">37,5 тыс. ₽</span>
+                            <span class="before before-change input__below-span">363,7 тыс. ₽</span>
+                        </div>
+                    </div>
+                    <div class="calculator__left-fee calculator__left">
+                        <h2 class="title calculator__left-title calculator__title">Срок&nbsp;кредита (лет):</h2>
+                        <div class="input input__number">
+                            <input class="calculator__input" type="text" value="1" id="credit-term" min="0" max="10000000" placeholder="0 лет">
+                        </div>
+                        <div class="input input__range">
+                            <input class="calculator__input-range slider-progress styled-slider" type="range" value="1" id="credit-term-range" min="1" max="30" placeholder="0 лет">
+                        </div>
+                        <div class="input__below">
+                            <span class="from input__below-span">1 год</span>
+                            <span class="before input__below-span">30 лет</span>
+                        </div>
+                    </div>
+                    <div class="calculator__left-capital calculator__left">
+                        <div class="calculator__left-capital-top">
+                            <input type="checkbox" name="check" id="switch2" class="switch">
+                            <label class="switch-for" for="switch2">
+                                <h2 class="title calculator__left-title calculator__title">Есть&nbsp;материнский&nbsp;капитал</h2>
+                            </label>
+                        </div>
+                        <div class="input__capital-block">
+                            <div class="input input__number">
+                                <input class="calculator__input input__capital" type="text" value="" id="maternity-capital" min="0" max="700000" placeholder="0 ₽">
+                            </div>
+                            <div class="input input__range">
+                                <input class="calculator__input-range slider-progress styled-slider input__capital" type="range" value="0" id="maternity-capital-range" min="0" max="700000" step="1000" placeholder="0 ₽">
+                            </div>
+                            <div class="input__below">
+                                <span class="from input__below-span">1 тыс. ₽</span>
+                                <span class="before input__below-span">350 тыс. ₽</span>
+                                <span class="before input__below-span">700 тыс. ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="calculator__content-right">
+                    <div class="calculator__right-container">
+                        <ul class="calculator__right-list">
+                            <li class="calculator__right-item">
+                                <span class="calculator__item-title">Ежемесячный платёж</span>
+                                <div class="calculator__item-value" id="monthly-payment">0<span> ₽</span></div>
+                            </li>
+                            <li class="calculator__right-item">
+                                <span class="calculator__item-title">Процентная ставка</span>
+                                <div class="calculator__item-value" id="interest-rate"> 9.9<span> %</span></div>
+                            </li>
+                            <li class="calculator__right-item">
+                                <span class="calculator__item-title">Сумма кредита</span>
+                                <div class="calculator__item-value" id="credit-amount">0<span> ₽</span></div>
+                            </li>
+                            <li class="calculator__right-item">
+                                <span class="calculator__item-title">Срок Кредита</span>
+                                <div class="calculator__item-value" id="credit-period">1<span> год</span></div>
+                            </li>
+                        </ul>
+
+                        <form action="mail.php" enctype="multipart/form-data" method="POST" id="data" class="form g-form"> 
+                            <div class="calculator__data">
+                                <div class="calculator__form-label form-label">
+                                    <p class="calculator__item-title">Стоимость недвижимости</p>
+                                    <input 
+                                    class="calculator__input-cost input-total calculator__input-form" 
+                                    type="text" 
+                                    name="Стоимость недвижимости">
+                                </div>
+                                <div class="calculator__form-label form-label">
+                                    <p class="calculator__item-title">Первоначальный взнос</p>
+                                    <input 
+                                    class="calculator__input-contribution input-total calculator__input-form" 
+                                    type="text" 
+                                    name="Первоначальный взнос">
+                                </div>
+                                <div class="calculator__form-label form-label">
+                                    <p class="calculator__item-title">Сумма кредита</p>
+                                    <input 
+                                    class="calculator__input-amount input-total calculator__input-form" 
+                                    type="text" 
+                                    name="Сумма кредита">
+                                </div>
+                                <div class="calculator__form-label form-label">
+                                    <p class="calculator__item-title">Ежемесячный платёж</p>
+                                    <input 
+                                    class="calculator__input-payment input-total calculator__input-form" 
+                                    type="text" 
+                                    name="Ежемесячный платёж">
+                                </div>
+                                <div class="calculator__form-label form-label">
+                                    <p class="calculator__item-title">Процентная ставка</p>
+                                    <input 
+                                    class="calculator__input-precent input-total calculator__input-form" 
+                                    type="text" 
+                                    name="Процентная ставка">
+                                </div>
+                                <div class="calculator__form-label form-label">
+                                    <p class="calculator__item-title">Срок кредита</p>
+                                    <input 
+                                    class="calculator__input-term input-total calculator__input-form" 
+                                    type="text" 
+                                    name="Срок кредита">
+                                </div>
+                            </div>
+                            <h2 class="form__title g-form__title g-form__title_main">
+                                Заполните поля ниже, для получения решения по ипотечному кредиту
+                            </h2>
+                            <h2 class="g-form__title g-form__title_respond"></h2>
+                            <div class="g-form__preloader"></div>
+                            <div class="calculator__form-label">
+                                <input 
+                                class="calculator__input-name input-data calculator__input-form g-form__input g-form__input_name" 
+                                type="text" 
+                                name="ФИО"
+                                data-validate-field='name'
+                                required placeholder="ФИО как в паспорте">
+                            </div>
+                            <div class="calculator__form-label">
+                                <input 
+                                class="calculator__input-tel input-data calculator__input-form g-form__input g-form__input_tel"
+                                name="Телефон"
+                                data-validate-field='tel'
+                                data-validate-rules='phone'
+                                required 
+                                type="tel" 
+                                placeholder="Номер мобильного телефона">
+                              </div>
+                            <button class="btn g-form__button calculator__btn">Отправить</button>
+                            <div class="status"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/inputmask.min.js"></script>
+    <script src="js/just-validate.min.js"></script>
+    <script src="js/iframeResizer.contentWindow.min.js"></script>
+
+</body>
+</html>
